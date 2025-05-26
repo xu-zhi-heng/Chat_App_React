@@ -1,0 +1,106 @@
+/* ✅ 主容器样式 */
+.list-container {
+    border-left: 1px solid white;
+    background-color: #16202A;
+    height: 100vh;
+}
+
+/* ✅ 内容区域 */
+.list-content {
+    height: 100%;
+}
+
+/* ✅ 页面容器样式 */
+.page-container {
+    width: 300px;
+    background-color: #0D1117;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 255, 198, 0.1);
+    height: 100%;
+    overflow-y: auto;
+
+    /* ✅ 自定义滚动条（WebKit） */
+    scrollbar-width: thin;             /* Firefox */
+    scrollbar-color: #00ffc6 #16202A;  /* Firefox */
+}
+
+
+/* ✅ Chrome / Edge / Safari */
+.page-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.page-container::-webkit-scrollbar-track {
+    background: #16202A;
+    border-radius: 4px;
+}
+
+.page-container::-webkit-scrollbar-thumb {
+    background: #00ffc6;
+    border-radius: 4px;
+    box-shadow: inset 0 0 6px rgba(0, 255, 198, 0.4);
+    transition: background 0.3s ease;
+}
+
+.page-container::-webkit-scrollbar-thumb:hover {
+    background: #00e6b3;
+}
+
+/* ✅ 标题样式 */
+.page-title {
+    color: #00FFC6;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-shadow: 0 2px 4px rgba(0, 255, 198, 0.3);
+}
+
+/* ✅ 搜索框样式 */
+.search-box {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgba(0, 255, 198, 0.05);
+    border: 1px solid #00FFC6;
+    color: #AAB2C0;
+    box-shadow: 0 2px 5px rgba(0, 255, 198, 0.1);
+}
+
+.search-box::placeholder {
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+/* ✅ 列表项样式 */
+.list-item {
+    background-color: rgba(0, 255, 198, 0.05); /* ✅ 浅色半透明背景 */
+    color: #AAB2C0;
+    border: 1px solid rgba(0, 255, 198, 0.1); /* ✅ 增强视觉层次 */
+    padding: 12px 15px;
+    margin-bottom: 10px; /* ✅ 增加间距 */
+    border-radius: 8px; /* ✅ 增强 HUD 效果 */
+    transition: all 0.3s ease-in-out;
+}
+/* ✅ hover 效果优化 */
+.list-item:hover {
+    background-color: rgba(0, 255, 198, 0.1);
+    transform: translateY(-3px); /* ✅ 鼠标悬停时上浮效果 */
+    box-shadow: 0 4px 12px rgba(0, 255, 198, 0.15);
+}
+/* ✅ 选中状态 */
+.list-item.active {
+    background-color: rgba(0, 255, 198, 0.2);
+    border: 1px solid #00FFC6;
+    color: #00FFC6;
+    box-shadow: 0 0 12px rgba(0, 255, 198, 0.3);
+}
+
+
+.chatbox-sider {
+    background-color: #0d1117;
+    border-left: 1px solid #1e2a38;
+    display: flex;
+    flex-direction: column;
+    margin-left: 300px;
+}
+
+

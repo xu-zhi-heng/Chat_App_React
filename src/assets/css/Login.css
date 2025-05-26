@@ -1,0 +1,111 @@
+/* 登录页面容器 */
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(13, 17, 23, 0.9) 40%, rgba(22, 32, 42, 0.95) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 炫光背景动画 */
+.login-container::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(0, 255, 198, 0.15);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: pulse 8s infinite ease-in-out;
+    top: 20%;
+    left: 30%;
+}
+
+/* 登录表单 */
+.login-form {
+    width: 350px;
+    padding: 25px;
+    background: rgba(22, 32, 42, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 255, 198, 0.2);
+    border: 1px solid #00ffc6;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 登录表单悬停动画 */
+.login-form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 255, 198, 0.4);
+}
+
+/* 表单标题 */
+h2 {
+    text-align: center;
+    color: #00FFC6;
+    margin-bottom: 20px;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+}
+
+/* 输入框样式 */
+.ant-input,
+.ant-input-password {
+    background: rgba(13, 17, 23, 0.8);
+    border: 1px solid #00ffc6;
+    color: #AAB2C0;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 输入框聚焦 */
+.ant-input:focus,
+.ant-input-password:focus {
+    box-shadow: 0 0 8px rgba(0, 255, 198, 0.8);
+    border-color: #00FFC6;
+}
+
+/* 登录按钮 */
+.ant-btn-primary {
+    background: linear-gradient(135deg, #00FFC6, #00E6A5);
+    border: none;
+    color: #0D1117;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 255, 198, 0.4);
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* 按钮悬停效果 */
+.ant-btn-primary:hover {
+    background: linear-gradient(135deg, #00E6A5, #00FFC6);
+    box-shadow: 0 6px 20px rgba(0, 255, 198, 0.6);
+}
+
+/* 炫光动画 */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .login-form {
+        width: 90%;
+        padding: 20px;
+    }
+}

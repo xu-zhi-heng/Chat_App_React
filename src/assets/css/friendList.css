@@ -1,0 +1,52 @@
+/* 列表样式 */
+.friend-list {
+    background-color: #0d1117;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* 每个列表项 */
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 12px !important;
+    background-color: #0d1117;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.3s;
+    justify-content: start !important;
+}
+
+.list-item:hover {
+    background-color: #16202a;
+}
+
+
+/* 头像容器 */
+.avatar-container {
+    position: relative;
+    margin-right: 12px;
+}
+
+/* 右侧内容 */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 好友名称 */
+.friend-name {
+    font-size: 16px;
+    color: #00ffc6;
+    font-weight: bold;
+}
+
+/* 状态信息 */
+.friend-status {
+    font-size: 14px;
+    color: #aab2c0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
