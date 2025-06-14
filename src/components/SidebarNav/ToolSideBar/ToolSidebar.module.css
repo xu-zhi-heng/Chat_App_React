@@ -1,0 +1,77 @@
+.logo {
+    margin-bottom: 16px;
+    height: 80px;
+    outline: 0;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.sideBar {
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menuContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.menuItem {
+    width: 50px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #b9bbbe;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menuItemActive {
+    background-color: #e6e6e6;
+    color: white;
+    box-shadow: 0 0 6px rgba(88, 101, 242, 0.7);
+    transition: color 0.3s;
+}
+
+.icons {
+    font-size: 20px;
+    color: #000000;
+}
+
+.icons:hover {
+    color: #0a80ff;
+    transition: color 0.3s;
+}
+
+.menuItemActive .icons {
+    color: #0a80ff;
+}
+
+.bottomIcons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 10px 0;
+    margin: 0 12px;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-bottom: 20px;
+}
+

@@ -1,0 +1,120 @@
+.friendDetailContainer {
+    width: 100%;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #212529;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    border-radius: 5px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 30px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.closeBtn {
+    color: #fd397a !important;
+    margin-left: 8px;
+    font-size: 14px;
+    line-height: 14px;
+    width: 45px !important;
+    height: 35px !important;
+}
+
+.closeBtn:hover {
+    background-color: #e6e6e6;
+}
+
+.friendInfo {
+    overflow: hidden;
+    outline: none;
+    touch-action: none;
+    display: flex;
+    align-items: center;
+}
+
+.infoWrapper {
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.avatarWrapper {
+    position: relative;
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.statusDot {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.statusDot.online {
+    background-color: #52c41a;
+}
+
+.statusDot.offline {
+    background-color: #d9d9d9;
+}
+
+.nickName {
+    font-size: 20px !important;
+    margin: 0 0 4px !important;
+    text-align: center;
+}
+
+.lastTime {
+    font-size: 12px;
+    color: #6c757d !important;
+    margin: 0 !important;
+    font-style: italic !important;
+}
+
+.friendBasicInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 24px;
+    gap: 20px;
+}
+
+:global(.ant-tabs-nav::before) {
+    border-bottom: none !important;
+}
+
+.friendInfo strong {
+    margin-right: 8px;
+    color: #333;
+}
+
+.friendActions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}

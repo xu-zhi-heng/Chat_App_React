@@ -1,0 +1,43 @@
+.loginLayout {
+    min-height: 100vh;
+}
+
+.loginContent {
+    display: flex;
+}
+
+.loginLeft {
+    flex: 2;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+}
+
+.loginLeftContent {
+    text-align: center;
+}
+
+.leftImage {
+    max-width: 100%;
+    max-height: 80%;
+    object-fit: cover;
+}
+
+.loginRight {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+}
+
+.loginFormContainer {
+    width: 100%;
+    max-width: 400px;
+}
+
+.loginRegisterLink {
+    margin-bottom: 0;
+}

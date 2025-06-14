@@ -1,14 +1,14 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
+import Login from "./pages/Login/Login";
+import Home from "./pages/Home/Home";
+import Register from "./pages/Register/Register";
 
 const App = () => {
     return (
         <Routes>
             {/* 默认路由重定向 */}
-            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />

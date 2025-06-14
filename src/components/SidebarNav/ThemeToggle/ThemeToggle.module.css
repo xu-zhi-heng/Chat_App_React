@@ -1,0 +1,14 @@
+.themeToggleIcon {
+    font-size: 20px;
+    color: #0a80ff;
+}
+
+.themeToggleIcon.light {
+    color: #0a80ff;
+
+}
+
+.themeToggleIcon.dark {
+    color: #000000;
+}
+

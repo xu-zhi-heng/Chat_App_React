@@ -11,6 +11,6 @@ export const register = (values) => {
 };
 
 // 获取当前用户信息
-export const getUserInfo = () => {
+export const getUserInfo = (value) => {
     return api.get('/user/profile');
 };

@@ -1,0 +1,30 @@
+.container {
+    height: 100vh;
+}
+
+.navSider {
+    background-color: #ffffff;
+    border-right: 1px solid #ebebeb;
+}
+
+.listSider {
+    background-color: #fff;
+    border-right: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatContent {
+    background-color: #ffffff;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+}
+
+.userInfoSider {
+    background-color: #fff;
+    /*overflow: hidden;*/
+}

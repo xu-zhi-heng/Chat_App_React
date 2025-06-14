@@ -1,0 +1,79 @@
+.listBody {
+    overflow: hidden;
+    outline: none;
+    touch-action: none;
+    display: flex;
+    flex: 1;
+}
+
+.friendList {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-top: 0;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.listItem {
+    padding: 17px 30px !important;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: flex-start !important;
+    background-color: inherit;
+    border-bottom: 1px solid #ebebeb !important;
+    /*margin-bottom: -1px;*/
+    transition: background-color 0.3s;
+    border-radius: 0 !important;
+}
+
+.listItem:hover {
+    background-color: #e6e6e6;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(213, 210, 210, 0.06);
+}
+
+.listItem.active {
+    background-color: rgba(0, 255, 198, 0.2);
+    border: 1px solid #00FFC6;
+    color: #00FFC6;
+    box-shadow: 0 0 12px rgba(0, 255, 198, 0.3);
+    border-block-end: 1px solid #00FFC6 !important;
+}
+
+.avatarContainer {
+    position: relative;
+    margin-right: 12px;
+}
+
+.contentContainer {
+    flex: 1;
+    position: relative;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.friendName {
+    font-size: 16px;
+    color: #0a80ff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 500;
+    margin-bottom: 3.2px;
+}
+
+.friendStatus {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    margin-bottom: 0;
+    color: #969696;
+}
+
+

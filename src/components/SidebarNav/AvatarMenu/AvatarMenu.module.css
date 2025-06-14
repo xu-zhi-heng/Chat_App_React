@@ -1,0 +1,13 @@
+.avatar {
+    cursor: pointer;
+    margin: 5px 20px;
+    text-decoration: none !important;
+    outline: 0;
+    object-fit: cover;
+    vertical-align: middle;
+    border-style: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
