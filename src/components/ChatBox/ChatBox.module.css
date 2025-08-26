@@ -70,12 +70,11 @@
     background-color: #ebebeb;
 }
 
-
 .chatContent {
     flex: 1;
     padding: 30px;
     background-color: #ffffff;
-    overflow: scroll;
+    overflow-y: scroll;
     outline: none;
     touch-action: none;
 }
@@ -88,22 +87,22 @@
 
 .messageItem {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
     margin-bottom: 15px;
+    width: 100%;
 }
 
-.messageItem .left {
+.messageItem.left {
     justify-content: flex-start;
 }
 
-.messageItem .right {
+.messageItem.right {
     justify-content: flex-end;
 }
 
 .msgAvatarLeft {
     margin-right: 8px;
 }
+
 .msgAvatarRight {
     margin-left: 8px;
 }
@@ -179,3 +178,28 @@
 .sendBtn:hover {
     background-color: #e6e6e6 !important;
 }
+
+
+.moreActions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 16px;
+}
+
+.moreActions > div {
+    padding: 8px 15px;
+}
+
+.moreActions > div:hover {
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.deleteChat {
+    color: #fd397a !important;
+}
+
+

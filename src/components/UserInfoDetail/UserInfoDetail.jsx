@@ -70,17 +70,17 @@ const UserInfoDetail = ({ friend, onSendMessage, onCall, onDelete, onClose}) => 
                 items={items}
             />
 
-            <div className={styles.friendActions}>
-                <Button type="primary" icon={<MessageOutlined />} onClick={onSendMessage}>
-                    发消息
-                </Button>
-                <Button icon={<PhoneOutlined />}  onClick={onCall}>
-                    打电话
-                </Button>
-                <Button danger icon={<DeleteOutlined />} onClick={onDelete}>
-                    删除好友
-                </Button>
-            </div>
+            {/*<div className={styles.friendActions}>*/}
+            {/*    <Button type="primary" icon={<MessageOutlined />} onClick={onSendMessage}>*/}
+            {/*        发消息*/}
+            {/*    </Button>*/}
+            {/*    <Button icon={<PhoneOutlined />}  onClick={onCall}>*/}
+            {/*        打电话*/}
+            {/*    </Button>*/}
+            {/*    <Button danger icon={<DeleteOutlined />} onClick={onDelete}>*/}
+            {/*        删除好友*/}
+            {/*    </Button>*/}
+            {/*</div>*/}
         </div>
     );
 };

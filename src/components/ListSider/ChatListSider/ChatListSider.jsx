@@ -1,27 +1,31 @@
-import React, {useEffect, useState} from "react";
-import {Input, List, Avatar, message, Tooltip, Badge} from "antd";
+import React, {useEffect, useRef, useState, forwardRef, useImperativeHandle} from "react";
+import {Input, List, Avatar, message, Tooltip, Badge, Dropdown, Space, Menu} from "antd";
 import styles from "./ChatListSider.module.css";
 import commonStyles from "../../../assets/css/common.module.css"
-import {getAllChatList} from "../../../api/chatList";
+import {getAllChatList, updateChatList} from "../../../api/chatList";
 import {
     UsergroupAddOutlined,
     CommentOutlined,
-    CloseCircleOutlined
+    CloseCircleOutlined,
 } from "@ant-design/icons";
-const ChatListSider = ({getMessageHistory, activeChat, user, setActiveChat}) => {
-    const [messageList, setMessageList] = useState([])
+import { ChatEventBus } from '../../../eventBus/chatEventBus';
+
+const ChatListSider = forwardRef(({user, activeChat, onSelectChat}, ref) => {
+    const [chatList, setChatList] = useState([])
     useEffect(() => {
         if (user == null || !user.id) {
             return
         }
-        getMessageList()
+        getChatList()
     }, [user])
-    const getMessageList = () => {
+    // 获取聊天列表
+    const getChatList = () => {
         getAllChatList(user?.id).then(res => {
             if (res.code === 200) {
-                setMessageList(res.data)
-                if (res.data.length > 0) {
-                    setActiveChat(res.data[0].friendId)
+                setChatList(res.data)
+                if (res.data.length > 0 && !activeChat) {
+                    // 仅在 activeChat 为空时才默认选第一个
+                    onSelectChat(res.data[0])
                 }
             } else {
                 message.error(res.desc)
@@ -30,6 +34,47 @@ const ChatListSider = ({getMessageHistory, activeChat, user, setActiveChat}) => 
             console.log(err)
         })
     }
+    // 暴露方法给父组件
+    useImperativeHandle(ref, () => ({
+        getChatList
+    }));
+    const handleSelectChat = (chat) => {
+        onSelectChat(chat)
+        if (parseInt(chat.unreadCount) !== 0) {
+            readMessage(chat.id)
+            ChatEventBus.emit("updateAllUnReadMsgNum", {
+                flag: false,
+                num: parseInt(chat.unreadCount)
+            })
+        }
+    };
+    useEffect(() => {
+        const removeChat = ChatEventBus.on('removeChat', (data) => {
+            const updatedList = chatList.filter(item => item.id !== data.chatId);
+            setChatList(updatedList);
+        });
+        // 组件卸载时取消订阅
+        return removeChat;
+    }, [])
+
+    // 表示阅读了消息，将消息未读数设置为0
+    const readMessage = (chatListId) => {
+        let body = { id: chatListId, unreadCount: 0 };
+        updateChatList(body).then(res => {
+            if (res.code === 200) {
+                setChatList(prevList =>
+                    prevList.map(item =>
+                        item.id === chatListId ? { ...item, unreadCount: 0 } : item
+                    )
+                );
+            } else {
+                message.error(res.desc);
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
 
     const actionList = [
         { key: "1", icon: <UsergroupAddOutlined className={commonStyles.actionIcon}/>, tooltip: "创建群组" },
@@ -47,7 +92,6 @@ const ChatListSider = ({getMessageHistory, activeChat, user, setActiveChat}) => 
                             <div
                                 className={`${commonStyles.listLineItem} 
                                             ${item.key === '3' ? commonStyles.visibility : ''}`}
-                                // onClick={}
                             >
                                 {item.icon}
                             </div>
@@ -64,12 +108,12 @@ const ChatListSider = ({getMessageHistory, activeChat, user, setActiveChat}) => 
             <div className={styles.listBody}>
                 <List
                     className={styles.chatList}
-                    dataSource={messageList}
+                    dataSource={chatList}
                     renderItem={(item) => (
                         <List.Item
-                            className={`${styles.listItem} ${activeChat?.id === item.friendId ? 'active' : ''}`}
+                            className={`${styles.listItem} ${activeChat?.id === item.id ? styles.active : ''}`}
                             onClick={() => {
-                                getMessageHistory(item.friendId);
+                                handleSelectChat(item)
                             }}
                         >
                             <div className={styles.avatarContainer}>
@@ -83,8 +127,12 @@ const ChatListSider = ({getMessageHistory, activeChat, user, setActiveChat}) => 
                                     </div>
                                 </div>
                                 <div className={styles.noticeContent}>
-                                    <Badge count={25} color={'#0a80ff'} showZero/>
-                                    <div className={styles.msgTime}>03:41 PM</div>
+                                    {parseInt(item.unreadCount) === 0 ? (
+                                        <div style={{paddingTop: "17px"}}></div>
+                                    ) : (
+                                        <Badge count={parseInt(item.unreadCount)} color={'#0a80ff'} showZero={false} title={"未读消息数"} />
+                                    )}
+                                    <div className={styles.msgTime}>{item.lastMessageTime}</div>
                                 </div>
                             </div>
                         </List.Item>
@@ -93,6 +141,6 @@ const ChatListSider = ({getMessageHistory, activeChat, user, setActiveChat}) => 
             </div>
         </div>
     );
-};
+});
 
 export default ChatListSider;
