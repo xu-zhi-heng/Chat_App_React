@@ -4,43 +4,38 @@
     touch-action: none;
     display: flex;
     flex: 1;
+    align-items: center;
+    flex-direction: column;
 }
-
-/*:global(.ant-list-items) {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*}*/
 
 .chatList {
     display: flex;
     flex-direction: column;
     padding-left: 0;
-    margin-top: 0;
+    margin: 0;
     background-color: #ffffff;
     width: 100%;
 }
 
 .listItem {
-    padding: 17px 30px !important;
+    padding: 12px 30px !important; /* 减少上下内边距，更紧凑 */
     display: flex;
     cursor: pointer;
-    align-items: center;
+    align-items: flex-start; /* 顶部对齐，避免内容错位 */
     justify-content: flex-start !important;
     background-color: inherit;
-    border-bottom: 1px solid #ebebeb !important;
-    /*margin-bottom: -1px;*/
-    transition: background-color 0.3s;
+    border-bottom: 1px solid #f5f5f5 !important; /* 更浅的分割线 */
+    transition: all 0.3s; /* 增加所有属性过渡效果 */
     border-radius: 0 !important;
 }
 
 .listItem:hover {
-    background-color: #e6e6e6;
+    background-color: #f5f7fa; /* 更柔和的hover色 */
 }
 
 .active {
-    background-color: #dcdcdc !important;
+    background-color: #e6f7ff !important; /* 主题色相关的浅蓝背景 */
+    border-left: 3px solid #0a80ff !important; /* 左侧主题色标识线 */
 }
 
 
@@ -59,34 +54,33 @@
     position: relative;
     min-width: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
 }
 
 .messageContent {
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 0;
 }
 
 .chatName {
     font-size: 16px;
-    color: #0a80ff;
+    color: #333;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     font-weight: 500;
-    margin-bottom: 3.2px;
+    margin-bottom: 4px;
 }
 
 .chatMessage {
     font-size: 14px;
-    white-space: nowrap;
+    display: -webkit-box;
     overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 150px;
+    max-width: 200px;
     margin-bottom: 0;
-    color: #969696;
+    color: #666;
 }
 
 .noticeContent {
@@ -94,13 +88,14 @@
     display: flex;
     align-items: flex-end;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 5px;
+    gap: 8px;
+    min-width: 50px;
 }
 
 .msgTime {
-    color: #0a80ff !important;
-    font-size: 80%;
-    font-weight: 400;
-    margin-bottom: -10px;
+    color: #999 !important;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    top: 29px;
 }

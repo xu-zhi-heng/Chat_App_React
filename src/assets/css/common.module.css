@@ -6,8 +6,6 @@
     flex-direction: column;
     flex: 1;
     overflow: hidden;
-    /*scrollbar-width: thin;*/
-    /*scrollbar-color: #00ffc6 #16202A;*/
 }
 
 .pageContainer::-webkit-scrollbar {

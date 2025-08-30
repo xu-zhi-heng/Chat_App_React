@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // ✅ 基础配置
 const api = axios.create({
-    baseURL: 'http://101.132.121.100:8081/api', // 后端接口地址
-    // baseURL: 'http://127.0.0.1:8081/api', // 后端接口地址
+    // baseURL: 'http://101.132.121.100:8081/api', // 后端接口地址
+    baseURL: 'http://127.0.0.1:8081/api', // 后端接口地址
     timeout: 10000, // 请求超时时间
     headers: {
         'Content-Type': 'application/json',

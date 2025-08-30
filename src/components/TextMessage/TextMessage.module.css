@@ -1,0 +1,39 @@
+.bubble {
+    max-width: 450px;
+    padding: 15px;
+    border-radius: 15px;
+    background: #ececec;
+}
+
+/* 别人发的（左边，灰色） */
+.bubble.other {
+    border-bottom-left-radius: 0;
+}
+
+/* 自己发的（右边，蓝色） */
+.bubble.me {
+    background: #579ffb;
+    color: #fff;
+    border-bottom-right-radius: 0;
+}
+
+.msgInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.msgInfoName {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.msgInfoTime {
+    font-size: 0.85em;
+}
+
+.msgText {
+    font-family: Helvetica, sans-serif;
+}
+

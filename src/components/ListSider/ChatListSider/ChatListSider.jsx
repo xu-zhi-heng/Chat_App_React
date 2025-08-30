@@ -25,7 +25,16 @@ const ChatListSider = forwardRef(({user, activeChat, onSelectChat}, ref) => {
                 setChatList(res.data)
                 if (res.data.length > 0 && !activeChat) {
                     // 仅在 activeChat 为空时才默认选第一个
-                    onSelectChat(res.data[0])
+                    const chat = res.data[0]
+                    onSelectChat(chat)
+                    if (parseInt(chat.unreadCount) !== 0) {
+                        readMessage(chat.id)
+                        ChatEventBus.emit("updateAllUnReadMsgNum", {
+                            flag: false,
+                            num: parseInt(chat.unreadCount)
+                        })
+                        chat.unreadCount = 0
+                    }
                 }
             } else {
                 message.error(res.desc)
@@ -128,7 +137,7 @@ const ChatListSider = forwardRef(({user, activeChat, onSelectChat}, ref) => {
                                 </div>
                                 <div className={styles.noticeContent}>
                                     {parseInt(item.unreadCount) === 0 ? (
-                                        <div style={{paddingTop: "17px"}}></div>
+                                        <div style={{paddingTop: "20px"}}></div>
                                     ) : (
                                         <Badge count={parseInt(item.unreadCount)} color={'#0a80ff'} showZero={false} title={"未读消息数"} />
                                     )}

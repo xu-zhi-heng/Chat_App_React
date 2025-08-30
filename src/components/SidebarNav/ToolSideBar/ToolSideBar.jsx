@@ -38,7 +38,7 @@ const ToolSideBar = ({ activeRoute, onMenuSelect, onLogout, onThemeToggle, userI
         {
             key: "1",
             icon: (
-                <Badge count={allUnReadMessageNum} showZero={false}>
+                <Badge count={allUnReadMessageNum} showZero={false} size="small">
                     <MessageOutlined className={styles.icons} />
                 </Badge>
             ),

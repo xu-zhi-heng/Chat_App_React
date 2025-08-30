@@ -74,10 +74,39 @@
     flex: 1;
     padding: 30px;
     background-color: #ffffff;
-    overflow-y: scroll;
+    overflow-y: auto;
     outline: none;
     touch-action: none;
 }
+
+/* 滚动条整体样式 */
+.chatContent::-webkit-scrollbar {
+    width: 8px; /* 垂直滚动条宽度 */
+    height: 8px; /* 水平滚动条高度（如果需要） */
+}
+
+/* 滚动条轨道 */
+.chatContent::-webkit-scrollbar-track {
+    background: #f1f1f1; /* 轨道背景色 */
+    border-radius: 4px; /* 轨道圆角 */
+}
+
+/* 滚动条滑块 */
+.chatContent::-webkit-scrollbar-thumb {
+    background: #c1c1c1; /* 滑块颜色 */
+    border-radius: 4px; /* 滑块圆角 */
+}
+
+/* 滚动条滑块悬停状态 */
+.chatContent::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8; /* 滑块悬停颜色 */
+}
+
+/* 滚动条滑块激活状态（点击时） */
+.chatContent::-webkit-scrollbar-thumb:active {
+    background: #888888; /* 滑块激活颜色 */
+}
+
 
 .messageList {
     display: flex;
@@ -88,6 +117,7 @@
 .messageItem {
     display: flex;
     margin-bottom: 15px;
+    align-items: flex-end;
     width: 100%;
 }
 
@@ -100,11 +130,21 @@
 }
 
 .msgAvatarLeft {
-    margin-right: 8px;
+    margin-right: 10px;
+    background: #ddd;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    border-radius: 50%;
 }
 
 .msgAvatarRight {
-    margin-left: 8px;
+    background: #ddd;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    margin-left: 10px;
+    border-radius: 50%;
 }
 
 /* ✅ 底部输入框 */

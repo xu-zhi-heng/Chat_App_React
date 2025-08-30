@@ -101,8 +101,11 @@ const Home = () => {
                         // 正在和对方聊天 -> 更新消息框
                         ChatEventBus.emit("updateChatBoxMessage", message);
                     } else {
-                        // 没有和对方聊天 -> 更新未读数
-                        increaseUnreadCount(true, 1);
+                        // 如果接受的消息不是正在输入的消息类型就更新未读数
+                        if (message.msgType !== 'TYPING') {
+                            // 没有和对方聊天 -> 更新未读数
+                            increaseUnreadCount(true, 1);
+                        }
                     }
                 } else {
                     // 说明没有聊天列表, 更新消息列表
