@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { register } from '../../api/auth';
 import registerPng from "../../assets/image/chat_register.png"
+import {uploadFile} from "../../api/file";
+import WebSocketService from "../../utils/WebSocketService";
+import {getCurrentTime} from "../../utils/date";
 
 const { Title, Text, Link } = Typography;
 
@@ -53,16 +56,27 @@ const Register = () => {
         let avatarPath = '';
         try {
             if (file) {
-                const fileForm = new FormData();
-                fileForm.append('avatar', file);
-                const uploadRes = await axios.post('http://localhost:9090/api/auth/uploadFile', fileForm, {
-                    headers: { 'Content-Type': 'multipart/form-data' },
+                const result = await uploadFile(file, "/file/uploadFile", (progress) => {
+                    console.log(`上传进度: ${progress}%`);
                 });
-                if (uploadRes.status === 200 && uploadRes.data.path) {
-                    avatarPath = uploadRes.data.path;
+                if (result !== null && result.code === 200) {
+                    avatarPath= result.data
                 } else {
-                    message.error(uploadRes.data.message);
+                    console.error(result.desc)
+                    message.warning("上传头像失败:");
                 }
+
+                // 这是之前node上传文件的
+                // const fileForm = new FormData();
+                // fileForm.append('avatar', file);
+                // const uploadRes = await axios.post('http://localhost:9090/api/auth/uploadFile', fileForm, {
+                //     headers: { 'Content-Type': 'multipart/form-data' },
+                // });
+                // if (uploadRes.status === 200 && uploadRes.data.path) {
+                //     avatarPath = uploadRes.data.path;
+                // } else {
+                //     message.error(uploadRes.data.message);
+                // }
             }
 
             const registerData = {

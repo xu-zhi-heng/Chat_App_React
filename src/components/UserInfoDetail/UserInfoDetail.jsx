@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Avatar, Button, Tabs} from "antd";
-import { PhoneOutlined, MessageOutlined, DeleteOutlined, CloseOutlined  } from "@ant-design/icons";
+import { PhoneOutlined, MessageOutlined, DeleteOutlined, CloseOutlined, UserOutlined } from "@ant-design/icons";
 import styles from "./UserInfoDetail.module.css";
+import {getRelImageUlr} from "../../utils/relFileUrl";
 
 const UserInfoDetail = ({ friend, onSendMessage, onCall, onDelete, onClose}) => {
     if (!friend) return null;
+
+    const [relAvatarUrl, setRelAvatarUrl] = useState(null)
+    useEffect(() => {
+        const loadImage = async () => {
+            const url = await getRelImageUlr(friend.avatar);
+            setRelAvatarUrl(url);
+        };
+        loadImage();
+    }, [friend]);
 
     const friendBasicInfo = <div className={styles.friendBasicInfo}>
         {friend.username && (
@@ -56,7 +66,11 @@ const UserInfoDetail = ({ friend, onSendMessage, onCall, onDelete, onClose}) => 
             <div className={styles.friendInfo}>
                 <div className={styles.infoWrapper}>
                     <div className={styles.avatarWrapper}>
-                        <Avatar src={friend.avatar} size={96} />
+                        <Avatar
+                            src={relAvatarUrl || undefined}  // 有图片地址就用图片，否则设为undefined
+                            icon={!relAvatarUrl && <UserOutlined />}  // 没有图片地址时显示默认用户图标
+                            size={96}
+                        />
                         <span className={`${styles.statusDot} ${friend.isOnline ? "online" : "offline"}`}/>
                     </div>
                     <h5 className={styles.nickName}>{friend.nickname}</h5>

@@ -13,8 +13,8 @@ class WebSocketService {
     connect(userId) {
         if (this.socket) return;
 
-        // this.socket = new WebSocket("ws://101.132.121.100:8082/chat");
-        this.socket = new WebSocket("ws://127.0.0.1:8082/chat");
+        this.socket = new WebSocket("ws://101.132.121.100:8082/chat");
+        // this.socket = new WebSocket("ws://127.0.0.1:8082/chat");
 
         this.socket.onopen = () => {
             console.log("WebSocket 连接成功");

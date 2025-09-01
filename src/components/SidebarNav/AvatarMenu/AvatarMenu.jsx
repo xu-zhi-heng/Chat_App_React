@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Avatar, Dropdown } from "antd";
 import {
     UserOutlined,
@@ -8,8 +8,19 @@ import {
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import style from "./AvatarMenu.module.css"
+import {getFilePresignedUrl} from "../../../api/file";
+import {getRelImageUlr} from "../../../utils/relFileUrl";
 
 const AvatarMenu = ({avatarUrl}) => {
+    const [relAvatarUrl, setRelAvatarUrl] = useState(null)
+    useEffect(() => {
+        const loadImage = async () => {
+            const url = await getRelImageUlr(avatarUrl);
+            setRelAvatarUrl(url);
+        };
+        loadImage();
+    }, [avatarUrl]);
+
     const handleMenuClick = (e) => {
         if (e.key === 'profile') {
             // todo 个人资料显示
@@ -58,8 +69,8 @@ const AvatarMenu = ({avatarUrl}) => {
             <div>
                 <Avatar
                     size={40}
-                    src={avatarUrl || undefined}
-                    icon={!avatarUrl && <UserOutlined />}
+                    src={relAvatarUrl || undefined}
+                    icon={!relAvatarUrl && <UserOutlined />}
                     className={style.avatar}
                 />
             </div>
